@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Count Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    input, button {
+      margin: 5px 0;
+      padding: 8px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Employee Count Calculator</h2>
+
+  <label for="startId">Start Employee ID:</label><br>
+  <input type="number" id="startId" /><br>
+
+  <label for="endId">End Employee ID:</label><br>
+  <input type="number" id="endId" /><br>
+
+  <button onclick="calculateCount()">Calculate Count</button>
+
+  <h3 id="result"></h3>
+
+  <script>
+    function calculateCount() {
+      const start = parseInt(document.getElementById('startId').value);
+      const end = parseInt(document.getElementById('endId').value);
+      const result = document.getElementById('result');
+
+      if (isNaN(start) || isNaN(end)) {
+        result.textContent = "Please enter valid numeric values.";
+        return;
+      }
+
+      if (start > end) {
+        result.textContent = "Start ID should be less than or equal to End ID.";
+        return;
+      }
+
+      const count = end - start + 1;
+      result.textContent = `Total Employees: ${count}`;
+    }
+  </script>
+
+</body>
+</html>
